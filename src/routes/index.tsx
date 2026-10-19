@@ -1,5 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { SiteHeader, SiteFooter } from "@/components/site";
 import hero from "@/assets/hero.jpg";
 import logo from "@/assets/logo.png";
 
@@ -64,19 +64,7 @@ const faqs = [
 function Index() {
   return (
     <div className="bg-background text-foreground">
-      <header className="absolute inset-x-0 top-0 z-20">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 text-primary-foreground">
-          <a href="#" className="font-display text-xl tracking-wide">The Prost Co.</a>
-          <nav className="hidden gap-8 text-sm md:flex">
-            <a href="#packages">Packages</a>
-            <a href="#process">Process</a>
-            <a href="#faq">FAQ</a>
-          </nav>
-          <a href="#inquire" className="border border-primary-foreground/60 px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary">
-            Request a Proposal
-          </a>
-        </div>
-      </header>
+      <SiteHeader overlay />
 
       <section className="relative flex min-h-[92vh] items-end">
         <img src={hero} alt="Bartender pouring a cocktail at an LA wedding" width={1600} height={1008} className="absolute inset-0 h-full w-full object-cover" />
@@ -90,8 +78,8 @@ function Index() {
             Elevated bar service for weddings, corporate events and private gatherings.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <a href="#inquire" className="bg-gold px-7 py-3.5 text-sm font-semibold text-accent-foreground hover:opacity-90">Request a Proposal</a>
-            <a href="#packages" className="border border-primary-foreground/60 px-7 py-3.5 text-sm">View Packages</a>
+            <Link to="/book" className="bg-gold px-7 py-3.5 text-sm font-semibold text-accent-foreground hover:opacity-90">Request a Proposal</Link>
+            <Link to="/packages" className="border border-primary-foreground/60 px-7 py-3.5 text-sm">View Packages</Link>
           </div>
         </div>
       </section>
@@ -134,9 +122,9 @@ function Index() {
               <h3 className="mt-4 text-3xl">{p.name}</h3>
               <p className="mt-4 font-display text-4xl">From {p.price}*</p>
               <p className="mt-4 flex-1 leading-relaxed opacity-80">{p.desc}</p>
-              <a href="#inquire" className={`mt-8 border px-5 py-3 text-center text-sm ${p.featured ? "border-gold bg-gold text-accent-foreground" : "border-primary"}`}>
+              <Link to="/book" className={`mt-8 border px-5 py-3 text-center text-sm ${p.featured ? "border-gold bg-gold text-accent-foreground" : "border-primary"}`}>
                 Request a Proposal
-              </a>
+              </Link>
             </div>
           ))}
         </div>
@@ -187,63 +175,14 @@ function Index() {
         </div>
       </section>
 
-      <Inquiry />
+      <section className="mx-auto max-w-3xl px-6 py-24 text-center">
+        <h2 className="text-4xl md:text-5xl">Let's plan your bar</h2>
+        <p className="mt-4 text-muted-foreground">Tell us about your event and we'll send a tailored proposal.</p>
+        <Link to="/book" className="mt-8 inline-block bg-primary px-7 py-4 text-sm font-semibold text-primary-foreground">Request a Proposal</Link>
+      </section>
 
-      <footer className="bg-primary py-12 text-center text-sm text-primary-foreground/70">
-        <p className="font-display text-2xl text-primary-foreground">PROST!</p>
-        <p className="mt-3">© {new Date().getFullYear()} The Prost Co. · Mobile Bartending · Los Angeles & Ventura County</p>
-        <p className="mt-2"><a href="#">Terms and Conditions</a> · <a href="#">Privacy Policy</a></p>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
 
-function Inquiry() {
-  const [sent, setSent] = useState(false);
-  const onSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    setSent(true);
-  };
-  const L = ({ label, children }: { label: string; children: React.ReactNode }) => (
-    <label className="block text-sm"><span className="mb-1.5 block text-muted-foreground">{label}</span>{children}</label>
-  );
-  return (
-    <section id="inquire" className="mx-auto max-w-3xl px-6 py-24">
-      <p className="eyebrow text-center text-muted-foreground">Inquire</p>
-      <h2 className="mt-3 text-center text-4xl md:text-5xl">Request a Proposal</h2>
-      {sent ? (
-        <div className="mt-10 border border-border bg-card p-10 text-center">
-          <p className="font-display text-3xl">Cheers, we've got it.</p>
-          <p className="mt-3 text-muted-foreground">Thank you for your inquiry. We'll be in touch shortly with your proposal.</p>
-        </div>
-      ) : (
-        <form onSubmit={onSubmit} className="mt-10 grid gap-5 md:grid-cols-2">
-          <L label="Name"><input required maxLength={100} className="field" /></L>
-          <L label="Email"><input required type="email" maxLength={255} className="field" /></L>
-          <L label="Phone"><input required type="tel" maxLength={30} className="field" /></L>
-          <L label="Event type">
-            <select required className="field" defaultValue="">
-              <option value="" disabled>Select…</option>
-              <option>Wedding</option><option>Private event</option><option>Corporate event</option><option>Other</option>
-            </select>
-          </L>
-          <L label="Event date"><input required type="date" className="field" /></L>
-          <L label="Venue / city"><input maxLength={150} className="field" /></L>
-          <L label="Guest count"><input type="number" min={1} className="field" /></L>
-          <L label="Start – end time"><input placeholder="e.g. 5pm – 10pm" maxLength={50} className="field" /></L>
-          <L label="Bar budget"><input placeholder="e.g. $2,000" maxLength={50} className="field" /></L>
-          <L label="How did you hear about us?">
-            <select className="field" defaultValue="">
-              <option value="" disabled>Select…</option>
-              <option>Google</option><option>Instagram</option><option>Referral</option><option>Venue / planner</option><option>Other</option>
-            </select>
-          </L>
-          <div className="md:col-span-2"><L label="Special requests"><textarea rows={4} maxLength={1000} className="field" /></L></div>
-          <button className="bg-primary px-7 py-4 text-sm font-semibold text-primary-foreground hover:opacity-90 md:col-span-2">
-            Request a Proposal
-          </button>
-        </form>
-      )}
-    </section>
-  );
-}
