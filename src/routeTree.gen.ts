@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AddOnsRouteImport } from './routes/add-ons'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as BookRouteImport } from './routes/book'
+import { Route as GetInTouchRouteImport } from './routes/get-in-touch'
 import { Route as PackagesRouteImport } from './routes/packages'
 
 const IndexRoute = IndexRouteImport.update({
@@ -41,6 +42,11 @@ const BookRoute = BookRouteImport.update({
   path: '/book',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GetInTouchRoute = GetInTouchRouteImport.update({
+  id: '/get-in-touch',
+  path: '/get-in-touch',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PackagesRoute = PackagesRouteImport.update({
   id: '/packages',
   path: '/packages',
@@ -53,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/add-ons': typeof AddOnsRoute
   '/blog': typeof BlogRoute
   '/book': typeof BookRoute
+  '/get-in-touch': typeof GetInTouchRoute
   '/packages': typeof PackagesRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +68,7 @@ export interface FileRoutesByTo {
   '/add-ons': typeof AddOnsRoute
   '/blog': typeof BlogRoute
   '/book': typeof BookRoute
+  '/get-in-touch': typeof GetInTouchRoute
   '/packages': typeof PackagesRoute
 }
 export interface FileRoutesById {
@@ -70,14 +78,37 @@ export interface FileRoutesById {
   '/add-ons': typeof AddOnsRoute
   '/blog': typeof BlogRoute
   '/book': typeof BookRoute
+  '/get-in-touch': typeof GetInTouchRoute
   '/packages': typeof PackagesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/add-ons' | '/blog' | '/book' | '/packages'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/add-ons'
+    | '/blog'
+    | '/book'
+    | '/get-in-touch'
+    | '/packages'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/add-ons' | '/blog' | '/book' | '/packages'
-  id: '__root__' | '/' | '/about' | '/add-ons' | '/blog' | '/book' | '/packages'
+  to:
+    | '/'
+    | '/about'
+    | '/add-ons'
+    | '/blog'
+    | '/book'
+    | '/get-in-touch'
+    | '/packages'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/add-ons'
+    | '/blog'
+    | '/book'
+    | '/get-in-touch'
+    | '/packages'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -86,6 +117,7 @@ export interface RootRouteChildren {
   AddOnsRoute: typeof AddOnsRoute
   BlogRoute: typeof BlogRoute
   BookRoute: typeof BookRoute
+  GetInTouchRoute: typeof GetInTouchRoute
   PackagesRoute: typeof PackagesRoute
 }
 
@@ -126,6 +158,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BookRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/get-in-touch': {
+      id: '/get-in-touch'
+      path: '/get-in-touch'
+      fullPath: '/get-in-touch'
+      preLoaderRoute: typeof GetInTouchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/packages': {
       id: '/packages'
       path: '/packages'
@@ -142,6 +181,7 @@ const rootRouteChildren: RootRouteChildren = {
   AddOnsRoute: AddOnsRoute,
   BlogRoute: BlogRoute,
   BookRoute: BookRoute,
+  GetInTouchRoute: GetInTouchRoute,
   PackagesRoute: PackagesRoute,
 }
 export const routeTree = rootRouteImport
