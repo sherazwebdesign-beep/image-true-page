@@ -8,3 +8,7 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep shared branding, navigation and footer in `src/components/site.tsx` so all pages stay consistent.
+- Preserve original-site public paths, including `/get-in-touch`, and retain existing paths as compatible pages.
+- Inquiry forms are presentation-only until real submission functionality is explicitly requested.
