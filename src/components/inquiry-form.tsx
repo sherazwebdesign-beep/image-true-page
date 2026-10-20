@@ -1,4 +1,5 @@
 import { useState, type FormEvent, type ReactNode } from "react";
+import { Button } from "@/components/ui/button";
 
 export function Inquiry() {
   const [sent, setSent] = useState(false);
@@ -15,8 +16,9 @@ export function Inquiry() {
       <h2 className="mt-3 text-center text-4xl md:text-5xl">Request a Proposal</h2>
       {sent ? (
         <div className="mt-10 border border-border bg-card p-10 text-center">
-          <p className="font-display text-3xl">Cheers, we've got it.</p>
-          <p className="mt-3 text-muted-foreground">Thank you for your inquiry. We'll be in touch shortly with your proposal.</p>
+          <p className="font-display text-3xl">Thank you for trying the inquiry form.</p>
+          <p className="mt-3 text-muted-foreground">This is a demo. Your details have not been sent or saved.</p>
+          <Button variant="outline" className="mt-6" onClick={() => setSent(false)}>Back to form</Button>
         </div>
       ) : (
         <form onSubmit={onSubmit} className="mt-10 grid gap-5 md:grid-cols-2">
@@ -41,9 +43,9 @@ export function Inquiry() {
             </select>
           </L>
           <div className="md:col-span-2"><L label="Special requests"><textarea rows={4} maxLength={1000} className="field" /></L></div>
-          <button className="bg-primary px-7 py-4 text-sm font-semibold text-primary-foreground hover:opacity-90 md:col-span-2">
+          <Button className="h-12 rounded-none md:col-span-2">
             Request a Proposal
-          </button>
+          </Button>
         </form>
       )}
     </section>
