@@ -1,7 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { SiteHeader, SiteFooter } from "@/components/site";
+import { createFileRoute } from "@tanstack/react-router";
+import { SiteHeader, SiteFooter, DemoLink } from "@/components/site";
 import hero from "@/assets/hero.jpg";
 import logo from "@/assets/logo.png";
+import welcomeCocktails from "@/assets/welcome-cocktails.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -78,22 +79,27 @@ function Index() {
             Elevated bar service for weddings, corporate events and private gatherings.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <Link to="/book" className="bg-gold px-7 py-3.5 text-sm font-semibold text-accent-foreground hover:opacity-90">Request a Proposal</Link>
-            <Link to="/packages" className="border border-primary-foreground/60 px-7 py-3.5 text-sm">View Packages</Link>
+            <DemoLink className="bg-gold px-7 py-3.5 text-sm font-semibold text-accent-foreground">Request a Proposal</DemoLink>
+            <DemoLink className="border border-primary-foreground/60 px-7 py-3.5 text-sm">View Packages</DemoLink>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-[auto_1fr] md:items-center">
-        <img src={logo} alt="The Prost Co. logo" width={162} height={146} className="mx-auto w-36" loading="lazy" />
+      <section aria-labelledby="welcome-heading" className="mx-auto grid max-w-6xl gap-12 px-6 py-20 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-20 lg:py-28">
+        <div className="relative">
+          <img src={welcomeCocktails} alt="Two craft cocktails at a garden celebration" width={960} height={1200} className="aspect-[4/5] max-h-[560px] w-full object-cover" loading="lazy" />
+          <div className="absolute bottom-6 right-6 flex h-28 w-28 items-center justify-center rounded-full border border-border bg-background p-4 md:h-36 md:w-36">
+            <img src={logo} alt="The Prost Co." width={162} height={146} className="h-auto w-full" loading="lazy" />
+          </div>
+        </div>
         <div>
-          <p className="eyebrow text-muted-foreground">Welcome</p>
-          <h2 className="mt-3 text-4xl md:text-5xl">Give us the occasion, and we'll be there to celebrate with you.</h2>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            We are a mobile bartending service dedicated to elevating your event in every way possible. With over 10 years of
-            hospitality experience, we know how to elevate your guests' experience. We personalize each event we take on and
-            ensure every glass is crafted just as you've imagined.
-          </p>
+          <p className="eyebrow text-muted-foreground">Welcome to The Prost Co.</p>
+          <h2 id="welcome-heading" className="mt-5 text-4xl leading-[1.12] md:text-5xl">Give us the occasion.<br /><em>We'll bring the celebration.</em></h2>
+          <div className="my-7 h-px w-16 bg-gold" />
+          <p className="text-lg leading-relaxed text-muted-foreground">We are a mobile bartending service dedicated to elevating your event in every way possible. With over 10 years of hospitality experience, we know how to elevate your guests' experience.</p>
+          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">We personalize each event we take on and ensure every glass is crafted just as you've imagined.</p>
+          <p className="mt-8 font-display text-3xl italic">A little Austrian spirit.<br />A celebration that's entirely yours.</p>
+          <DemoLink className="mt-7 inline-flex items-center gap-3 border-b border-gold pb-2 text-sm font-semibold">Meet The Prost Co. <span aria-hidden="true">↗</span></DemoLink>
         </div>
       </section>
 
@@ -122,9 +128,9 @@ function Index() {
               <h3 className="mt-4 text-3xl">{p.name}</h3>
               <p className="mt-4 font-display text-4xl">From {p.price}*</p>
               <p className="mt-4 flex-1 leading-relaxed opacity-80">{p.desc}</p>
-              <Link to="/book" className={`mt-8 border px-5 py-3 text-center text-sm ${p.featured ? "border-gold bg-gold text-accent-foreground" : "border-primary"}`}>
+              <DemoLink className={`mt-8 border px-5 py-3 text-center text-sm ${p.featured ? "border-gold bg-gold text-accent-foreground" : "border-primary"}`}>
                 Request a Proposal
-              </Link>
+              </DemoLink>
             </div>
           ))}
         </div>
@@ -178,7 +184,7 @@ function Index() {
       <section className="mx-auto max-w-3xl px-6 py-24 text-center">
         <h2 className="text-4xl md:text-5xl">Let's plan your bar</h2>
         <p className="mt-4 text-muted-foreground">Tell us about your event and we'll send a tailored proposal.</p>
-        <Link to="/book" className="mt-8 inline-block bg-primary px-7 py-4 text-sm font-semibold text-primary-foreground">Request a Proposal</Link>
+        <DemoLink className="mt-8 inline-block bg-primary px-7 py-4 text-sm font-semibold text-primary-foreground">Request a Proposal</DemoLink>
       </section>
 
       <SiteFooter />
