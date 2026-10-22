@@ -12,3 +12,5 @@
 - Keep shared branding, navigation and footer in `src/components/site.tsx` so all pages stay consistent.
 - Preserve original-site public paths, including `/get-in-touch`, and retain existing paths as compatible pages.
 - Inquiry forms are presentation-only until real submission functionality is explicitly requested.
+- Render original journal content from static article data through `/post/$slug` to preserve article URLs without adding a backend.
+- Use Embla for the homepage photo slider with accessible controls and reduced-motion support.

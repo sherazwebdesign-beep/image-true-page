@@ -10,6 +10,9 @@ const tiers = [
 const current = [
   { name: "Single Pour", sub: "Bartender only", items: ["One certified + insured bartender (per 65 guests)", "4 hours of service", "Equipment", "Set up and break down", "30 miles round trip ($1.5 per additional mile)"], note: "Does not include: satellite bar, consultation, shopping list, bar sign/menu, garnishes" },
   { name: "Hops and Grapes", sub: "Bartender + bar setup", items: ["One certified + insured bartender (per 65 guests)", "4 hours of service", "Service of beer, wine, seltzer, soft drinks", "Consultation and shopping list", "Portable satellite bar", "Equipment", "Bar menu and sign", "Set up and break down", "30 miles round trip ($1.5 per additional mile)"], note: "Does not include: hard liquor service" },
+  { name: "Neat and Simple", sub: "Bar setup + 2 signature cocktails", items: ["One certified + insured bartender (per 65 guests)", "4 hours of service", "2 signature cocktails", "Standard garnishes", "Service of beer, wine, seltzer, soft drinks", "Consultation and shopping list", "Portable satellite bar", "Equipment", "Bar menu and sign", "Set up and break down", "30 miles round trip ($1.5 per additional mile)"], note: "Dry hire: you provide the alcohol." },
+  { name: "On the Rocks", sub: "Bar setup + up to 4 signature cocktails", items: ["One certified + insured bartender (per 65 guests)", "4 hours of service", "Up to 4 signature cocktails", "Specialty garnishes", "Infused hydration station", "Service of beer, wine, seltzer, soft drinks", "Consultation and shopping list", "Portable satellite bar", "Equipment", "Bar menu and sign", "Set up and break down", "30 miles round trip ($1.5 per additional mile)"], note: "Dry hire: you provide the alcohol." },
+  { name: "Open Bar", sub: "Individually tailored", items: ["Beer and wine", "Classic cocktails", "Essential highball selections"], note: "Contact us for individual pricing." },
 ];
 
 export const Route = createFileRoute("/packages")({

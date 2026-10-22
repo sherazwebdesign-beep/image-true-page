@@ -1,5 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, meta } from "@/components/site";
+import articles from "@/data/posts.json";
 
 const posts = [
   ["Top 10 Popular Wedding Cocktails and What Makes Each One Unique", "Choosing the right cocktails for a wedding can elevate the celebration, making it memorable and enjoyable for guests.", "Mar 14", "3 min read"],
@@ -12,12 +13,12 @@ export const Route = createFileRoute("/blog")({
   component: () => (
     <PageShell eyebrow="Journal" title="Blog" intro="Cocktail ideas and event advice from behind the bar.">
       <div className="mx-auto max-w-3xl divide-y divide-border px-6 py-16">
-        {posts.map(([t, e, d, r]) => (
+        {posts.map(([t, e, d, r], index) => (
           <article key={t} className="py-8">
             <p className="eyebrow text-muted-foreground">Maximilian Wicke{d && ` · ${d}`}{r && ` · ${r}`}</p>
             <h2 className="mt-3 text-3xl">{t}</h2>
             <p className="mt-3 text-muted-foreground">{e}</p>
-            <span className="mt-4 inline-block text-sm text-gold">Read more →</span>
+            <Link to="/post/$slug" params={{ slug: articles[index]?.slug ?? "" }} className="mt-4 inline-block border-b border-gold pb-1 text-sm">Read article →</Link>
           </article>
         ))}
       </div>
