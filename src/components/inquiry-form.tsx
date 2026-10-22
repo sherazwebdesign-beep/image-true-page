@@ -22,27 +22,21 @@ export function Inquiry() {
         </div>
       ) : (
         <form onSubmit={onSubmit} className="mt-10 grid gap-5 md:grid-cols-2">
-          <L label="Name"><input required maxLength={100} className="field" /></L>
+          <L label="First Name"><input required maxLength={100} className="field" /></L>
+          <L label="Last Name"><input required maxLength={100} className="field" /></L>
           <L label="Email"><input required type="email" maxLength={255} className="field" /></L>
           <L label="Phone"><input required type="tel" maxLength={30} className="field" /></L>
-          <L label="Event type">
+          <L label="What Are You Planning?">
             <select required className="field" defaultValue="">
               <option value="" disabled>Select…</option>
               <option>Wedding</option><option>Private event</option><option>Corporate event</option><option>Other</option>
             </select>
           </L>
           <L label="Event date"><input required type="date" className="field" /></L>
-          <L label="Venue / city"><input maxLength={150} className="field" /></L>
-          <L label="Guest count"><input type="number" min={1} className="field" /></L>
-          <L label="Start – end time"><input placeholder="e.g. 5pm – 10pm" maxLength={50} className="field" /></L>
-          <L label="Bar budget"><input placeholder="e.g. $2,000" maxLength={50} className="field" /></L>
-          <L label="How did you hear about us?">
-            <select className="field" defaultValue="">
-              <option value="" disabled>Select…</option>
-              <option>Google</option><option>Instagram</option><option>Referral</option><option>Venue / planner</option><option>Other</option>
-            </select>
-          </L>
-          <div className="md:col-span-2"><L label="Special requests"><textarea rows={4} maxLength={1000} className="field" /></L></div>
+          <L label="Location of Event"><input required maxLength={150} className="field" /></L>
+          <L label="Est. Number of Guests"><input required type="number" min={1} className="field" /></L>
+          <L label="Start Time"><input type="time" className="field" /></L>
+          <L label="End Time"><input type="time" className="field" /></L>
           <Button className="h-12 rounded-none md:col-span-2">
             Request a Proposal
           </Button>
